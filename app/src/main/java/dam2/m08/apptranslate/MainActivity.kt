@@ -13,6 +13,9 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.http.HTTP
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -69,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getLanguages() {
         CoroutineScope(Dispatchers.IO + coroutineExceptionHandler).launch {
+
             val languages = retrofitService.getLanguages()
 
             if(languages.isSuccessful){
